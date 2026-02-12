@@ -3,203 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ultimate Valentine For Reza 💖</title>
+<title>For Reza 💗</title>
 
 <style>
-body {
-  margin:0;
-  font-family:'Segoe UI',sans-serif;
-  background: radial-gradient(circle at top, #ffe6f2, #ffcce6, #ffb3d9);
-  overflow-x:hidden;
-  text-align:center;
-  transition:2s;
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+text-align:center;
+background:linear-gradient(to bottom,#ffe6f2,#ffcce6);
+overflow-x:hidden;
 }
 
 h1,h2,h3,p{color:#c2185b}
 
 button{
-  padding:12px 28px;
-  border:none;
-  border-radius:40px;
-  background:linear-gradient(45deg,#ff4da6,#ff80bf);
-  color:white;
-  font-size:16px;
-  cursor:pointer;
-  box-shadow:0 8px 25px rgba(255,0,128,0.4);
-  transition:0.3s;
-  margin:6px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:linear-gradient(45deg,#ff66a3,#ff99cc);
+color:white;
+font-size:16px;
+cursor:pointer;
+margin:10px;
+transition:0.3s;
 }
-button:hover{transform:scale(1.08)}
+button:hover{transform:scale(1.1)}
+
 .hidden{display:none}
 
-/* Floating hearts */
-.heart{
-  position:fixed;
-  top:-10px;
-  animation:fall 6s linear infinite;
+.flower{
+font-size:30px;
+cursor:pointer;
+margin:10px;
+display:inline-block;
+transition:0.3s;
 }
-@keyframes fall{to{transform:translateY(110vh)}}
+.flower:hover{transform:scale(1.3)}
 
-/* Glow effect */
-.glow{
-  animation:glowPulse 2s infinite alternate;
-}
-@keyframes glowPulse{
-  from{box-shadow:0 0 10px #ff66b3}
-  to{box-shadow:0 0 30px #ff1493}
-}
-
-/* Claw machine */
-.claw-box{
-  margin-top:30px;
-  padding:20px;
-  background:white;
-  border-radius:30px;
-  box-shadow:0 20px 50px rgba(255,0,128,0.3);
-}
 .claw-area{
-  position:relative;
-  height:220px;
+position:relative;
+height:250px;
+margin-top:20px;
 }
-.claw-heart{
-  position:absolute;
-  font-size:28px;
-  cursor:pointer;
-  transition:0.3s;
+
+.heart{
+position:absolute;
+font-size:25px;
+cursor:pointer;
+transition:0.3s;
 }
-.claw-heart:hover{transform:scale(1.3)}
-.big-heart{font-size:55px}
+.heart:hover{transform:scale(1.2)}
 
-.fade{animation:fadeIn 2s ease-in}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-.typewriter{
-  overflow:hidden;
-  border-right:3px solid #c2185b;
-  white-space:nowrap;
-  animation:typing 4s steps(40,end), blink .8s infinite;
+.big-heart{
+font-size:55px;
+animation:pulse 1s infinite alternate;
 }
-@keyframes typing{from{width:0}to{width:100%}}
-@keyframes blink{50%{border-color:transparent}}
 
+@keyframes pulse{
+from{transform:scale(1)}
+to{transform:scale(1.2)}
+}
+
+.falling{
+position:fixed;
+top:-10px;
+animation:fall 6s linear infinite;
+}
+@keyframes fall{
+to{transform:translateY(110vh)}
+}
+
+img{
+max-width:80%;
+border-radius:20px;
+margin-top:15px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
 </style>
 </head>
+
 <body>
 
-<div id="start" class="fade">
-<h1>💌 The Ultimate Love Surprise 💌</h1>
-<p>Dwi Andhika Fitriyanto 🤍</p>
-<button onclick="startGame()">Mulai Petualangan Cinta 🌸</button>
+<audio autoplay loop>
+<source src="ssstik.io_1770861978395.mp3" type="audio/mpeg">
+</audio>
+
+<h1>Untuk Reza 💗</h1>
+<p>Cari 7 bunga tersembunyi dulu ya monyed 🥰</p>
+
+<div id="flowers"></div>
+
+<div id="passwordSection" class="hidden">
+<h2>Masukkan password dari kotak 🎁</h2>
+<input type="text" id="passInput" placeholder="Password...">
+<br>
+<button onclick="checkPass()">Buka 💌</button>
 </div>
 
-<div id="clawSection" class="hidden fade">
-<h2>🎀 Love Claw Machine Extreme 🎀</h2>
-<p>Tangkap hati TERBESAR untuk lanjut ke level terakhir 💗</p>
-<div class="claw-box">
+<div id="clawSection" class="hidden">
+<h2>Mesin Capit Cinta 💘</h2>
+<p>Tangkap hati paling besar ya 😏</p>
 <div class="claw-area" id="clawArea"></div>
 </div>
+
+<div id="choiceSection" class="hidden">
+<h2>Kamu yakin mau buka hatinya? 💖</h2>
+<button onclick="openHeart()">Buka 💗</button>
+<button onclick="openHeart()">Tidak</button>
 </div>
 
-<div id="choice" class="hidden fade">
-<h2>Kamu berhasil menangkap hati terbesar 💞</h2>
-<p>Yakin mau buka isi hati ini?</p>
-<button onclick="openHeart()">Buka 🤍</button>
-<button onclick="openHeart()">Gamau</button>
-</div>
+<div id="finalSection" class="hidden">
+<h2>Happy Valentine Monyeedku 🤍</h2>
 
-<div id="final" class="hidden fade">
-<h2 class="typewriter">Isi hati ini adalah kita 💗</h2>
-<br>
-<img src="1001159685.jpg" width="260" style="border-radius:30px" class="glow">
+<img src="1001159688.jpg">
 
-<p>
-Kalau kamu sampai di titik ini...
-<br><br>
-Artinya kamu berhasil menyelesaikan semua level cinta yang aku buat.
-Dan seperti hati terbesar yang kamu tangkap tadi...
-Aku juga selalu milih kamu.
-<br><br>
-Bukan cuma hari ini.
-Bukan cuma Valentine.
-Tapi setiap hari.
-<br><br>
-Kamu rumah.
-Kamu tenang.
-Kamu tempat aku pulang.
-<br><br>
-Dan aku nggak mau kehilangan itu.
+<p style="padding:20px; max-width:700px; margin:auto;">
+haloo my handsome, my love, my world! MONYED KESAYANGAN GUWEH!! 🪐✨🤍<br><br>
+happy valentine sayangkuu cintakuu gantengkuu!! 🫶🏻<br><br>
+di hari yang penuh cinta ini aku mau bilang aku sangat amat bersyukur bisa terus bersama kamu...
+aku harap cinta kita selalu bertumbuh setiap harinya dan rasa sayang yang ga akan pernah habis 🤍<br><br>
+aku selalu bangga punya kamu, bangga jadi pacar kamu, bangga sama semua proses kamu.
+terimakasii sudah selalu sabar ngadepin aku ya bekantan 😭💗<br><br>
+sekali lagi… happy valentine monyedku 🤏🏻
 </p>
 
-<h3>Will you stay with me forever? 💍</h3>
-<button onclick="finalYes()">YES 💖</button>
+<h2>Mau terus sama aku selamanya? 💍</h2>
+<button>YES 💗</button>
+
 </div>
 
 <script>
+let flowerCount=0;
+const flowersDiv=document.getElementById("flowers");
 
-function startGame(){
- document.getElementById('start').classList.add('hidden');
- document.getElementById('clawSection').classList.remove('hidden');
- createClaw();
+for(let i=0;i<7;i++){
+let f=document.createElement("span");
+f.innerHTML="🌸";
+f.className="flower";
+f.onclick=function(){
+this.style.visibility="hidden";
+flowerCount++;
+if(flowerCount===7){
+document.getElementById("passwordSection").classList.remove("hidden");
+}
+}
+flowersDiv.appendChild(f);
 }
 
-function createClaw(){
- const area=document.getElementById('clawArea');
- for(let i=0;i<10;i++){
-  let h=document.createElement('div');
-  h.innerHTML="💖";
-  h.className="claw-heart";
-  h.style.top=Math.random()*170+"px";
-  h.style.left=Math.random()*90+"%";
-  h.onclick=function(){alert('Ups hampir 🤭 coba lagi')}
-  area.appendChild(h);
- }
- let big=document.createElement('div');
- big.innerHTML="💗";
- big.className="claw-heart big-heart glow";
- big.style.top="70px";
- big.style.left="40%";
- big.onclick=function(){
-  document.getElementById('clawSection').classList.add('hidden');
-  document.getElementById('choice').classList.remove('hidden');
- }
- area.appendChild(big);
+function checkPass(){
+let val=document.getElementById("passInput").value;
+if(val==="MONYEDKU"){
+document.getElementById("passwordSection").classList.add("hidden");
+document.getElementById("clawSection").classList.remove("hidden");
+generateHearts();
+}else{
+alert("Password salah monyed 😏");
+}
+}
+
+function generateHearts(){
+let area=document.getElementById("clawArea");
+
+for(let i=0;i<8;i++){
+let h=document.createElement("span");
+h.innerHTML="💗";
+h.className="heart";
+h.style.top=Math.random()*200+"px";
+h.style.left=Math.random()*90+"%";
+area.appendChild(h);
+}
+
+let big=document.createElement("span");
+big.innerHTML="💖";
+big.className="heart big-heart";
+big.style.top="100px";
+big.style.left="45%";
+big.onclick=function(){
+document.getElementById("clawSection").classList.add("hidden");
+document.getElementById("choiceSection").classList.remove("hidden");
+}
+area.appendChild(big);
 }
 
 function openHeart(){
- document.getElementById('choice').classList.add('hidden');
- document.getElementById('final').classList.remove('hidden');
- document.body.style.background="radial-gradient(circle,#fff0f5,#ff99cc,#ff66b3)";
+document.getElementById("choiceSection").classList.add("hidden");
+document.getElementById("finalSection").classList.remove("hidden");
+createFallingHearts();
 }
 
-function finalYes(){
- alert('Aku tau jawabannya selalu YES 🤍💍');
- launchConfetti();
+function createFallingHearts(){
+for(let i=0;i<20;i++){
+let h=document.createElement("div");
+h.innerHTML="💖";
+h.className="falling";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(3+Math.random()*5)+"s";
+document.body.appendChild(h);
 }
-
-function createHearts(){
- const heart=document.createElement('div');
- heart.className='heart';
- heart.innerHTML='🤍';
- heart.style.left=Math.random()*100+'vw';
- heart.style.fontSize=Math.random()*20+10+'px';
- document.body.appendChild(heart);
- setTimeout(()=>{heart.remove()},6000);
 }
-setInterval(createHearts,400);
-
-function launchConfetti(){
- for(let i=0;i<30;i++){
-  const c=document.createElement('div');
-  c.innerHTML='💞';
-  c.style.position='fixed';
-  c.style.left=Math.random()*100+'vw';
-  c.style.top=Math.random()*100+'vh';
-  c.style.fontSize='20px';
-  document.body.appendChild(c);
-  setTimeout(()=>{c.remove()},2000);
- }
-}
-
 </script>
 
 </body>
